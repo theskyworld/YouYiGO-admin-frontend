@@ -18,7 +18,7 @@ type SideBarItem = {
   children?: SideBarItem[];
 };
 
-const sideBarItems: SideBarItem[] = [
+export const sideBarItems: SideBarItem[] = [
   {
     id: "1",
     title: "统计分析",
