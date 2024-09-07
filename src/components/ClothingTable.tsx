@@ -1,3 +1,4 @@
+import { SearchOutlined } from "@ant-design/icons";
 import {
   Button,
   Image,
@@ -8,13 +9,12 @@ import {
   TableColumnsType,
   TableColumnType,
 } from "antd";
-import { CLOTHING_TABLE_COLUMNS } from "../utils/constants";
-import { Clothing, ClothingIndex, Operation } from "../utils/types";
-import { useRef, useState } from "react";
 import { FilterDropdownProps } from "antd/es/table/interface";
-import { SearchOutlined } from "@ant-design/icons";
+import { useRef, useState } from "react";
 import Highlighter from "react-highlight-words";
 import { clothes } from "../../mocks/data";
+import { CLOTHING_TABLE_COLUMNS } from "../utils/constants";
+import { Clothing, ClothingIndex, Operation } from "../utils/types";
 
 const operations: Operation[] = [
   {
@@ -174,7 +174,7 @@ export default function ClothingTable() {
       title: CLOTHING_CATEGORY,
       dataIndex: "category",
       key: "category",
-      width: "20%",
+      width: "7%",
       ...getColumnSearchProps("category"),
     },
     {
@@ -198,7 +198,14 @@ export default function ClothingTable() {
       width: "10%",
       ...getColumnSearchProps("pic"),
       render: (pic: string) => {
-        return <Image src={pic} preview={false} style={{ width: "100%" }} />;
+        return (
+          <Image
+            className="max-h-20 max-w-40"
+            src={pic}
+            preview={false}
+            style={{ width: "100%" }}
+          />
+        );
       },
     },
     {
@@ -260,5 +267,13 @@ export default function ClothingTable() {
       },
     },
   ];
-  return <Table columns={columns} dataSource={data} size="small" bordered />;
+  return (
+    <Table
+      columns={columns}
+      dataSource={data}
+      size="small"
+      bordered
+      scroll={{ y: "60vh", x: "110vw" }}
+    />
+  );
 }

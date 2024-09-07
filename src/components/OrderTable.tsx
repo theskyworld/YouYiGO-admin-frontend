@@ -257,5 +257,13 @@ export default function OrderTable() {
     },
   ];
 
-  return <Table columns={columns} dataSource={data} size="small" bordered />;
+  return (
+    <Table
+      columns={columns}
+      dataSource={data}
+      size="small"
+      bordered
+      scroll={{ y: "60vh" }}
+    />
+  );
 }
