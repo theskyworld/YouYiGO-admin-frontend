@@ -1,13 +1,7 @@
+import { ItemType, MenuItemType } from "antd/es/menu/interface";
 import { ORDER_STATUS } from "./constants";
 
-export interface IconBaseProps extends React.HTMLProps<HTMLSpanElement> {
-  spin?: boolean;
-  rotate?: number;
-}
-export type TwoToneColor = string | [string, string];
-export interface AntdIconProps extends IconBaseProps {
-  twoToneColor?: TwoToneColor;
-}
+export type SideBarItem = ItemType<MenuItemType & { path: string }>;
 
 export type OrderStatus = (typeof ORDER_STATUS)[keyof typeof ORDER_STATUS];
 export interface DataType {

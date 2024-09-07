@@ -13,17 +13,9 @@ import Sider from "antd/es/layout/Sider";
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import { SIDE_BAR_ITEMS } from "../utils/constants";
-import { type AntdIconProps } from "../utils/types";
+import { SideBarItem } from "../utils/types";
+import { MenuItemGroupType, MenuItemType } from "antd/es/menu/interface";
 
-type SideBarItem = {
-  id: string;
-  title: string;
-  icon: React.ForwardRefExoticComponent<
-    Omit<AntdIconProps, "ref"> & React.RefAttributes<HTMLSpanElement>
-  >;
-  path?: string;
-  children?: SideBarItem[];
-};
 const {
   STATISTICS,
   CLOTHING,
@@ -37,57 +29,57 @@ const {
 } = SIDE_BAR_ITEMS;
 export const sideBarItems: SideBarItem[] = [
   {
-    id: "1",
-    title: STATISTICS,
-    icon: LineChartOutlined,
+    key: "1",
+    label: STATISTICS,
+    icon: React.createElement(LineChartOutlined),
     path: "/statistics",
   },
   {
-    id: "2",
-    title: SLIDE,
-    icon: FileImageOutlined,
+    key: "2",
+    label: SLIDE,
+    icon: React.createElement(FileImageOutlined),
     path: "/slide",
   },
   {
-    id: "3",
-    title: ANNOUNCEMENT,
-    icon: FileTextOutlined,
+    key: "3",
+    label: ANNOUNCEMENT,
+    icon: React.createElement(FileTextOutlined),
     path: "/announcement",
   },
   {
-    id: "4",
-    title: CLOTHING,
-    icon: AccountBookOutlined,
+    key: "4",
+    label: CLOTHING,
+    icon: React.createElement(AccountBookOutlined),
     children: [
       {
-        id: "4-1",
-        title: CLOTHING_LIST,
-        icon: OrderedListOutlined,
+        key: "4-1",
+        label: CLOTHING_LIST,
+        icon: React.createElement(OrderedListOutlined),
         path: "/clothing/list",
       },
       {
-        id: "4-2",
-        title: CLOTHING_CATEGORY,
-        icon: AppstoreOutlined,
+        key: "4-2",
+        label: CLOTHING_CATEGORY,
+        icon: React.createElement(AppstoreOutlined),
         path: "/clothing/category",
       },
     ],
   },
   {
-    id: "5",
-    title: ORDER,
-    icon: ContainerOutlined,
+    key: "5",
+    label: ORDER,
+    icon: React.createElement(ContainerOutlined),
     children: [
       {
-        id: "5-1",
-        title: ORDER_LIST,
-        icon: OrderedListOutlined,
+        key: "5-1",
+        label: ORDER_LIST,
+        icon: React.createElement(OrderedListOutlined),
         path: "/order/list",
       },
       {
-        id: "5-2",
-        title: ORDER_COMMENT,
-        icon: EditOutlined,
+        key: "5-2",
+        label: ORDER_COMMENT,
+        icon: React.createElement(EditOutlined),
         path: "/order/comment",
       },
     ],
@@ -100,32 +92,38 @@ export default function MySideBar() {
     token: { colorBgContainer },
   } = theme.useToken();
 
-  const items2 = sideBarItems.map((item) => {
-    return {
-      key: item.id,
-      icon: React.createElement(item.icon),
-      label: item.title,
-      path: item.path,
-      children: item.children
-        ? item.children.map((item) => {
-            return {
-              key: item.id,
-              icon: React.createElement(item.icon),
-              label: item.title,
-              path: item.path,
-            };
-          })
-        : null,
-    };
-  });
+  function findTargetItem(
+    items: SideBarItem[],
+    key: string,
+  ): SideBarItem | undefined {
+    for (const item of items) {
+      if (item!.key === key) {
+        return item;
+      } else if ((item as MenuItemGroupType).children) {
+        const result: SideBarItem | undefined = findTargetItem(
+          (item as MenuItemGroupType).children as SideBarItem[],
+          key,
+        );
+        if (result) return result;
+      }
+    }
+  }
+
+  function handleItemClick(key: string) {
+    const item = findTargetItem(sideBarItems, key);
+    if (item && (item as MenuItemType & { path: string }).path) {
+      navigate((item as MenuItemType & { path: string }).path);
+    }
+  }
+
   return (
     <Sider width={200} style={{ background: colorBgContainer }}>
       <Menu
         mode="inline"
         defaultSelectedKeys={["1"]}
         style={{ height: "100%", borderRight: 0 }}
-        items={items2}
-        onClick={({ item }) => item.props.path && navigate(item.props.path)}
+        items={sideBarItems}
+        onClick={({ key }) => handleItemClick(key)}
       />
     </Sider>
   );
