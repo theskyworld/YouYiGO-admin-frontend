@@ -1,3 +1,9 @@
+import OrderTable from "../components/OrderTable";
+
 export default function OrderListPage() {
-  return <div>OrderListPage</div>;
+  return (
+    <div>
+      <OrderTable />
+    </div>
+  );
 }

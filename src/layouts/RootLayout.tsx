@@ -21,13 +21,14 @@ export default function RootLayout({
         <MySideBar />
         <Layout style={{ padding: "20px" }}>
           <Content
+            className="overflow-y-auto"
             style={{
               padding: 24,
               margin: 0,
               minHeight: 280,
+              maxHeight: "80vh",
               background: colorBgContainer,
               borderRadius: borderRadiusLG,
-              overflow: "scroll",
             }}
           >
             {children}

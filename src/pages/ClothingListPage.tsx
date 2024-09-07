@@ -1,3 +1,9 @@
+import ClothingTable from "../components/ClothingTable";
+
 export default function ClothingListPage() {
-  return <div>ClothingListPage</div>;
+  return (
+    <div>
+      <ClothingTable />
+    </div>
+  );
 }
