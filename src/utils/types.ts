@@ -26,3 +26,18 @@ export type Operation = {
   label: string;
   handler: () => void;
 };
+
+export interface Clothing {
+  id: string;
+  name: string;
+  category: string;
+  price: number;
+  color: string;
+  pic: string;
+  brand: string;
+  views: number;
+  isOnSale: boolean;
+  description: string;
+  stock: number;
+}
+export type ClothingIndex = keyof Clothing;

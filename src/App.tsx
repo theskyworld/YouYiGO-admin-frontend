@@ -1,9 +1,9 @@
-import OrderTable from "./components/OrderTable";
+import ClothingTable from "./components/ClothingTable";
 import RootLayout from "./layouts/RootLayout";
 function App() {
   return (
     <RootLayout>
-      <OrderTable />
+      <ClothingTable />
     </RootLayout>
   );
 }

@@ -1,6 +1,6 @@
 import { faker } from "@faker-js/faker";
 import { ORDER_STATUS } from "../src/utils/constants";
-import { DataType } from "../src/utils/types";
+import { Clothing, DataType } from "../src/utils/types";
 import { getOrderStatusColor } from "../src/utils/functions";
 
 function generateOrders(): DataType[] {
@@ -21,4 +21,25 @@ function generateOrders(): DataType[] {
   return orders;
 }
 
+function generateClothings(): Clothing[] {
+  const clothes = [];
+  for (let i = 0; i < 50; i++) {
+    clothes.push({
+      id: faker.string.uuid(),
+      name: faker.commerce.productName(),
+      category: faker.commerce.department(),
+      price: Number(faker.commerce.price()),
+      color: faker.color.human(),
+      pic: faker.image.url(),
+      brand: faker.company.name(),
+      views: faker.number.int(),
+      isOnSale: faker.datatype.boolean(),
+      description: faker.lorem.sentence(),
+      stock: faker.number.int(),
+    });
+  }
+  return clothes;
+}
+
 export const orders = generateOrders();
+export const clothes = generateClothings();

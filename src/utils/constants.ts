@@ -19,3 +19,18 @@ export const TABLE_COLUMNS = {
   COMMENT: "备注",
   OPERATIONS: "操作",
 };
+
+export const CLOTHING_TABLE_COLUMNS = {
+  CLOTHING_ID: "服装编号",
+  CLOTHING_NAME: "服装名称",
+  CLOTHING_CATEGORY: "服装类别",
+  CLOTHING_PRICE: "服装价格",
+  CLOTHING_COLOR: "服装颜色",
+  CLOTHING_PIC: "服装图片",
+  CLOTHING_BRAND: "服装品牌",
+  VIEWS: "浏览量",
+  IS_ON_SALE: "是否已上架",
+  CLOTHING_STOCK: "服装库存",
+  DESCRIPTION: "服装描述",
+  OPERATIONS: "操作",
+};
