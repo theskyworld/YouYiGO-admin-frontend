@@ -1,4 +1,4 @@
-import { Breadcrumb, Layout, theme } from "antd";
+import { Layout, theme } from "antd";
 import React from "react";
 import MyHeader from "../components/MyHeader";
 import MySideBar from "../components/MySideBar";
@@ -19,12 +19,7 @@ export default function RootLayout({
       <MyHeader />
       <Layout>
         <MySideBar />
-        <Layout style={{ padding: "0 24px 24px" }}>
-          <Breadcrumb style={{ margin: "16px 0" }}>
-            <Breadcrumb.Item>Home</Breadcrumb.Item>
-            <Breadcrumb.Item>List</Breadcrumb.Item>
-            <Breadcrumb.Item>App</Breadcrumb.Item>
-          </Breadcrumb>
+        <Layout style={{ padding: "20px" }}>
           <Content
             style={{
               padding: 24,
@@ -32,6 +27,7 @@ export default function RootLayout({
               minHeight: 280,
               background: colorBgContainer,
               borderRadius: borderRadiusLG,
+              overflow: "scroll",
             }}
           >
             {children}
