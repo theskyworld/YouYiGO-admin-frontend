@@ -1,7 +1,7 @@
 import { faker } from "@faker-js/faker";
 import { ORDER_STATUS } from "../src/utils/constants";
-import { Clothing, DataType } from "../src/utils/types";
 import { getOrderStatusColor } from "../src/utils/functions";
+import { Clothing, DataType } from "../src/utils/types";
 
 function generateOrders(): DataType[] {
   const orders = [];
@@ -43,3 +43,4 @@ function generateClothings(): Clothing[] {
 
 export const orders = generateOrders();
 export const clothes = generateClothings();
+export const avatar = faker.image.url();
