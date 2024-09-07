@@ -34,3 +34,15 @@ export const CLOTHING_TABLE_COLUMNS = {
   DESCRIPTION: "服装描述",
   OPERATIONS: "操作",
 };
+
+export const SIDE_BAR_ITEMS = {
+  STATISTICS: "统计分析",
+  CLOTHING: "服装管理",
+  ANNOUNCEMENT: "公告管理",
+  SLIDE: "轮播图管理",
+  CLOTHING_LIST: "服装列表",
+  CLOTHING_CATEGORY: "服装分类",
+  ORDER: "订单管理",
+  ORDER_LIST: "订单列表",
+  ORDER_COMMENT: "订单评价",
+};

@@ -1,12 +1,17 @@
 import {
   AccountBookOutlined,
+  AppstoreOutlined,
+  ContainerOutlined,
+  EditOutlined,
+  FileImageOutlined,
+  FileTextOutlined,
   LineChartOutlined,
-  UnorderedListOutlined,
-  UserOutlined,
+  OrderedListOutlined,
 } from "@ant-design/icons";
 import { Menu, theme } from "antd";
 import Sider from "antd/es/layout/Sider";
 import React from "react";
+import { SIDE_BAR_ITEMS } from "../utils/constants";
 import { type AntdIconProps } from "../utils/types";
 
 type SideBarItem = {
@@ -17,39 +22,66 @@ type SideBarItem = {
   >;
   children?: SideBarItem[];
 };
-
+const {
+  STATISTICS,
+  CLOTHING,
+  ORDER,
+  ANNOUNCEMENT,
+  SLIDE,
+  CLOTHING_CATEGORY,
+  CLOTHING_LIST,
+  ORDER_LIST,
+  ORDER_COMMENT,
+} = SIDE_BAR_ITEMS;
 export const sideBarItems: SideBarItem[] = [
   {
     id: "1",
-    title: "统计分析",
+    title: STATISTICS,
     icon: LineChartOutlined,
   },
   {
     id: "2",
-    title: "服装管理",
+    title: SLIDE,
+    icon: FileImageOutlined,
+  },
+  {
+    id: "3",
+    title: ANNOUNCEMENT,
+    icon: FileTextOutlined,
+  },
+  {
+    id: "4",
+    title: CLOTHING,
     icon: AccountBookOutlined,
     children: [
       {
-        id: "2-1",
-        title: "服装管理",
-        icon: AccountBookOutlined,
+        id: "4-1",
+        title: CLOTHING_LIST,
+        icon: OrderedListOutlined,
       },
       {
-        id: "2-2",
-        title: "服装管理",
-        icon: AccountBookOutlined,
+        id: "4-2",
+        title: CLOTHING_CATEGORY,
+        icon: AppstoreOutlined,
       },
     ],
   },
   {
-    id: "3",
-    title: "订单管理",
-    icon: UnorderedListOutlined,
-  },
-  {
-    id: "4",
-    title: "用户管理",
-    icon: UserOutlined,
+    id: "5",
+    title: ORDER,
+    icon: ContainerOutlined,
+    children: [
+      {
+        id: "5-1",
+        title: ORDER_LIST,
+        icon: OrderedListOutlined,
+      },
+      {
+        id: "5-2",
+        title: ORDER_COMMENT,
+        icon: EditOutlined,
+      },
+    ],
   },
 ];
 
