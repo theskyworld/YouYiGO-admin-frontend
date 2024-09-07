@@ -1,8 +1,9 @@
+import OrderTable from "./components/OrderTable";
 import RootLayout from "./layouts/RootLayout";
 function App() {
   return (
     <RootLayout>
-      <h1>hello </h1>
+      <OrderTable />
     </RootLayout>
   );
 }
