@@ -258,12 +258,18 @@ export default function OrderTable() {
   ];
 
   return (
-    <Table
-      columns={columns}
-      dataSource={data}
-      size="small"
-      bordered
-      scroll={{ y: "60vh" }}
-    />
+    <div className="relative">
+      <div
+        className="absolute top-0 left-[-8px] bg-blue-600 w-2"
+        style={{ borderRadius: "8px 0 0 8px", height: "70vh" }}
+      ></div>
+      <Table
+        columns={columns}
+        dataSource={data}
+        size="small"
+        bordered
+        scroll={{ y: "60vh" }}
+      />
+    </div>
   );
 }
