@@ -76,7 +76,7 @@ export default function HotClothesRankingStatistics() {
     };
   }, [currentItem, data, barLabel]);
   return (
-    <div style={{ width: "60%" }} className="relative">
+    <div className="relative">
       <div>
         <canvas ref={canvasElemRef}></canvas>
       </div>

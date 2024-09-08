@@ -19,7 +19,7 @@ export default function RootLayout({
       <MyHeader />
       <Layout>
         <MySideBar />
-        <Layout style={{ padding: "20px" }}>
+        <Layout style={{ padding: "10px" }}>
           <Content
             className="overflow-y-auto"
             style={{
