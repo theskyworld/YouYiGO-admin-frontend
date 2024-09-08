@@ -1,3 +1,9 @@
+import WebsiteVisitAndOrdersCountStatistics from "../components/WebsiteVisitAndOrdersCountStatistics";
+
 export default function StatisticsPage() {
-  return <div>StatisticsPage</div>;
+  return (
+    <div>
+      <WebsiteVisitAndOrdersCountStatistics />
+    </div>
+  );
 }

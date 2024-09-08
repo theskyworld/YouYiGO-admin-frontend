@@ -33,3 +33,31 @@ export function getOrderStatusColor(orderStatus: OrderStatus): string {
       return "gray";
   }
 }
+
+/**
+ * 获取前n天的日期
+ * @param {number} count
+ * @returns {Array<string>} 前n天的日期数组（YYYY-MM-DD格式）
+ */
+export function getPreviousDays(count: number): Array<string> {
+  const today = new Date();
+  let result = [];
+
+  for (let i = 0; i < count - 1; i++) {
+    const previousDay = new Date(
+      today.getTime() - (i + 1) * 24 * 60 * 60 * 1000,
+    );
+    const year = previousDay.getFullYear();
+    const month = String(previousDay.getMonth() + 1).padStart(2, "0");
+    const day = String(previousDay.getDate()).padStart(2, "0");
+    result.push(`${year}-${month}-${day}`);
+  }
+  result = result.reverse();
+  // 加入今天的
+  const todayStr = `${today.getFullYear()}-${String(
+    today.getMonth() + 1,
+  ).padStart(2, "0")}-${String(today.getDate()).padStart(2, "0")}`;
+  result.push(todayStr);
+
+  return result;
+}

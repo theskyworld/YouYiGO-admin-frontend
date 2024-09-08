@@ -41,6 +41,14 @@ function generateClothings(): Clothing[] {
   return clothes;
 }
 
+export function generateRandomNums(count: number): number[] {
+  const nums = [];
+  for (let i = 0; i < count; i++) {
+    nums.push(faker.number.int({ min: 0, max: 1000 }));
+  }
+  return nums;
+}
+
 export const orders = generateOrders();
 export const clothes = generateClothings();
 export const avatar = faker.image.url();
